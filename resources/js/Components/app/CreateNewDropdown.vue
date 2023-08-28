@@ -18,7 +18,9 @@
         <div class="px-1 py-1">
           <MenuItem v-slot="{ active }">
             <a
+              href="#"
               class="text-gray-700 block px-4 py-2 text-sm"
+              @click="displayCreateFolderModal"
             >New Folder</a>
           </MenuItem>
         </div>
@@ -37,10 +39,16 @@
       </MenuItems>
     </transition>
   </Menu>
+  <CreateFolderModal v-model="showCreateFolderModal" />
 </template>
 
 <script setup>
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { ref } from 'vue';
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+import CreateFolderModal from '@/Components/app/CreateFolderModal.vue';
+
+const showCreateFolderModal = ref(false);
+const displayCreateFolderModal = () => {
+  showCreateFolderModal.value = true;
+}
 </script>
